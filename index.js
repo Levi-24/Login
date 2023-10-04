@@ -1,5 +1,9 @@
+let key;
+
 function Register(){
-    let key = document.getElementById('name').value;
+    do {
+        key = document.getElementById('name').value
+      } while (key == null);
     let value = document.getElementById('password').value;
     localStorage.setItem(key,value);
 }
@@ -9,12 +13,12 @@ function Login(){
     let password = document.getElementById('logpassword').value;
     let test = JSON.stringify(localStorage.getItem(name)).replaceAll('"','');
 
-    if(test == password){
+    if(test == password && name != ""){
         document.getElementById('alert').className = "succes";
-        document.getElementById('alert').innerHTML = "Sikeres belepes!";
+        document.getElementById('alert').innerHTML = "Sikeres belépés!";
     }
     else{
         document.getElementById('alert').className = "fail";
-        document.getElementById('alert').innerHTML = "Sikertelen belepes!";
+        document.getElementById('alert').innerHTML = "Sikertelen belépés!";
     }
 }
